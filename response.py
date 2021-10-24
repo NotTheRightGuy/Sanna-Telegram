@@ -45,7 +45,10 @@ def super_user_response(input_text):
         except IndexError:
             return "Please specify the action"
         if stock_action in ['hist','history','h']:
-            return hf.stock_history(stock_name)
+            return hf.info_stock(stock_name)
         elif stock_action in ['info','information','i']:
-            return hf.stock_info(stock_name)
+            hf.info_stock(stock_name)
+            with open('temp.txt') as file:
+                return file.text
+
     #CANDO : Add a return command to reply to unknown messages

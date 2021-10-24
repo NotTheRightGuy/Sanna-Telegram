@@ -1,11 +1,14 @@
 import yfinance as yf
 
-def stock_history(stock_name):
-    stock_ticker = yf.Ticker(stock_name)
-    hist = stock_ticker.history(period='max')
-    return hist
+def info_stock(stock):
+    ticker = yf.Ticker(stock)
+    raw_dic = ticker.info
+    with open('temp.txt','w') as file:
+        for keys in raw_dic:
+            var_str = "{} : {}\n".format(keys,raw_dic[keys])
+            file.write(var_str)
+        
 
-def stock_info(stock_name):
-    stock_ticker = yf.ticker(stock_name)
-    stock_info_dic = stock_ticker.info
-    return stock_info_dic
+
+
+
