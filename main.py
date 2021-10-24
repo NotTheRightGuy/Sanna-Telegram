@@ -10,12 +10,14 @@ def start_command(update, context):
 
 
 def help_command(update, context):
-    update.message.reply_text('If you need any help! You asked Del for it.')
+    update.message.reply_text('If you need any help! You can ask Del for it.')
 
 def handle_message(update,context):
     text = str(update.message.text).lower()
+    #Tester for message content
     print(">>>> User Id : ",update.message.from_user.id,"<<<<")
     print(">>> Message : ",update.message.text,"<<<")
+
     if int(update.message.from_user.id) in users.super_user_list:
         response = R.super_user_response(text)
     else:
